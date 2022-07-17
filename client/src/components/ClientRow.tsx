@@ -12,18 +12,19 @@ type Props = {
 const ClientRow: React.FC<Props> = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
-    // refetchQueries: [{ query: GET_CLIENTS }],
-    update(cache, { data: { deleteClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIENTS });
-      cache.writeQuery({
-        query: GET_CLIENTS,
-        data: {
-          clients: clients.filter(
-            (client: ClientType) => client.id !== deleteClient.id
-          ),
-        },
-      });
-    },
+    refetchQueries: [{ query: GET_CLIENTS }],
+    // update(cache, { data: { deleteClient } }) {
+    //   const clients: any = cache.readQuery({ query: GET_CLIENTS });
+
+    //   cache.writeQuery({
+    //     query: GET_CLIENTS,
+    //     data: {
+    //       clients: clients.filter(
+    //         (client: ClientType) => client.id !== deleteClient.id
+    //       ),
+    //     },
+    //   });
+    // },
   });
 
   return (
