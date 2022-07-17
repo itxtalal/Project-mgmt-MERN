@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../queries/projectQueries";
 import ClientInfo from "../components/ClientInfo";
 import DeleteProjectButton from "../components/DeleteProjectButton";
+import EditProjectForm from "../components/EditProjectForm";
 
 const Project: React.FC = () => {
   const { id } = useParams();
@@ -31,6 +32,7 @@ const Project: React.FC = () => {
 
           <ClientInfo client={data.project.client} />
 
+          <EditProjectForm project={data.project} />
           <DeleteProjectButton projectId={data.project.id} />
         </div>
       )}
