@@ -4,6 +4,7 @@ import { ClientType } from "../types/index";
 import { useMutation } from "@apollo/client";
 import { DELETE_CLIENT } from "../mutations/clientMutations";
 import { GET_CLIENTS } from "../queries/clientQueries";
+import { GET_PROJECTS } from "../queries/projectQueries";
 
 type Props = {
   client: ClientType;
@@ -12,7 +13,7 @@ type Props = {
 const ClientRow: React.FC<Props> = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
-    refetchQueries: [{ query: GET_CLIENTS }],
+    refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
     // update(cache, { data: { deleteClient } }) {
     //   const clients: any = cache.readQuery({ query: GET_CLIENTS });
 
