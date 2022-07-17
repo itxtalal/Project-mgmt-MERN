@@ -41,7 +41,7 @@ const AddProjectModal: React.FC<Props> = ({}) => {
       return alert("Please fill in all fields");
     }
 
-    // addClient();
+    addProject();
 
     setName("");
     setDescription("");
